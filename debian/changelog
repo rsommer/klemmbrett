@@ -1,3 +1,14 @@
+klemmbrett (0.1-4) quantal; urgency=low
+
+  [ Michael van Bracht ]
+  * Make interface attributes public
+  * Add some todos
+
+  [ Roland Sommer ]
+  * Config for git-buildpackage added
+
+ -- Roland Sommer <rol@ndsommer.de>  Thu, 14 Feb 2013 11:52:39 +0100
+
 klemmbrett (0.1-3) quantal; urgency=low
 
   * Initial Release.
