@@ -1,4 +1,4 @@
-klemmbrett (0.1-4) quantal; urgency=low
+klemmbrett (0.1-4.1) quantal; urgency=low
 
   [ Michael van Bracht ]
   * Make interface attributes public
