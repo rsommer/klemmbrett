@@ -1,3 +1,17 @@
+klemmbrett (0.2) raring; urgency=low
+
+  [ Roland Sommer ]
+  * Version Bump (klemmbrett 0.2)
+
+  [ Michael van Bracht ]
+  * Improve extend-detection
+  * Make extend-detection use startswith _and_ endswith
+  * Add some todos
+  * Do no boilerplate partialing of callbacks
+  * Add lazy submenus for popups
+
+ -- Roland Sommer <rol@ndsommer.de>  Thu, 14 Mar 2013 10:50:54 +0100
+
 klemmbrett (0.1-4.1) quantal; urgency=low
 
   [ Michael van Bracht ]
