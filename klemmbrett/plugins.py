@@ -92,6 +92,23 @@ class PopupPlugin(Plugin):
             self.popup,
         )
 
+    def _expand(self, widget, iterable):
+        sm = widget.get_submenu()
+        self._build_menu(sm, iterable())
+        sm.show_all()
+
+    def _build_menu(self, menu, items):
+        for pos, (label, value) in enumerate(items):
+            label = "_%s %s" % (pos, label)
+            item = _gtk.MenuItem(label, use_underline = True)
+            if _util.isgenerator(value):
+                item.set_submenu(_gtk.Menu())
+                item.connect("activate", self._expand, value)
+            else:
+                item.connect("activate", self.set, value)
+
+            menu.append(item)
+
     def popup(self):
         menu = _gtk.Menu()
         index = 0
@@ -107,11 +124,7 @@ class PopupPlugin(Plugin):
             menu.append(_gtk.SeparatorMenuItem())
             index += 1
 
-        for pos, (label, value) in enumerate(self.items()):
-            label = "_%s %s" % (pos, label)
-            item = _gtk.MenuItem(label, use_underline = True)
-            item.connect("activate", self.set, value)
-            menu.append(item)
+        self._build_menu(menu, self.items())
 
         menu.show_all()
         menu.popup(
@@ -151,8 +164,7 @@ class FancyItemsMixin(object):
             if "callable" in options:
                 yield (
                     label,
-                    _ft.partial(
-                        _util.load_dotted(options["callable"]),
+                    _util.load_dotted(options["callable"])(
                         options = options,
                         plugin = self,
                     ),
@@ -201,13 +213,21 @@ class HistoryPicker(PopupPlugin):
                 text,
             )
 
+    def is_extended(self, text):
+        if (
+            self._extend_detection
+            and len(self)
+            and (
+                text.startswith(self.top)
+                or text.endswith(self.top)
+            )
+        ):
+            return True
+        return False
+
     def add(self, text, emit = True):
         if self.accepts(text):
-            if (
-                self._extend_detection
-                and len(self)
-                and text.startswith(self.top)
-            ):
+            if self.is_extended(text):
                 self._history[0] = text
             else:
                 self._history.appendleft(text)
