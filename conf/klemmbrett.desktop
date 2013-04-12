@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Klemmbrett
+Exec=klemmbrett
+Icon=gtk-paste
+Type=Application
+Categories=GTK;GNOME;Utility;

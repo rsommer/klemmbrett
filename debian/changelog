@@ -1,3 +1,28 @@
+klemmbrett (0.3) raring; urgency=low
+
+  [ Michael van Bracht ]
+  * Support direct shortcuts for every complex item
+  * Remove (wrong) comment
+  * Unify Snippet- and ActionPicker into MultiPicker
+  * Remove debug print :-/
+  * Emit signal when new text is set via klemmbrett
+  * Cleanup todo list
+  * Codestyle
+  * New callable to autoquote & lineunwrap clipboard contents
+  * Use dot for type seperation
+  * Split HistoryPicker for use it without a PopupPlugin
+  * Add a ClipboardExchange plugin to share your Clipboard
+  * Call bootstrap all the way down the inheritance chain
+
+  [ Roland Sommer ]
+  * Fixed wrong section default
+  * Use 'now' instead of re-calling _time.time()
+  * Ignore tmp files
+  * Added simple dbus service for klemmbrett
+  * Added ubuntu plugin to core package
+
+ -- Roland Sommer <rol@ndsommer.de>  Fri, 12 Apr 2013 10:12:24 +0200
+
 klemmbrett (0.2) raring; urgency=low
 
   [ Roland Sommer ]

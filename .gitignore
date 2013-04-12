@@ -21,6 +21,12 @@ develop-eggs
 .installed.cfg
 lib
 lib64
+debian/files
+debian/klemmbrett.debhelper.log
+debian/klemmbrett.postinst.debhelper
+debian/klemmbrett.prerm.debhelper
+debian/klemmbrett.substvars
+debian/klemmbrett/
 
 # Installer logs
 pip-log.txt

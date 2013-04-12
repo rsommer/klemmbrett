@@ -10,6 +10,8 @@ Vcs-Browser: https://github.com/wontfix-org/klemmbrett
 
 Package: klemmbrett
 Architecture: all
+Replaces: klemmbrett-plugins
+Conflicts: klemmbrett-plugins
 Depends: ${python:Depends}, ${misc:Depends}
 Description: Easy clipboard management
  klemmbrett is an easy clipboard manager, extensible
