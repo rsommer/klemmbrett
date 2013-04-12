@@ -1,9 +1,16 @@
+import re as _re
 import os as _os
 
 import klemmbrett.util as _util
 
+
+def newline_to_comma_quoted(options, plugin):
+    return "'" + "','".join(_re.split(r"\s+", plugin.history.top.strip())) + "'"
+
+
 def newline_to_comma(options, plugin):
     return lambda: plugin.history.top.strip().replace("\n", ",")
+
 
 def fswalker(options, plugin):
     def walk(base = None):
