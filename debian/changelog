@@ -1,3 +1,20 @@
+klemmbrett (0.4) raring; urgency=low
+
+  [ Michael van Bracht ]
+  * Add omit-mode to specify what part of an item should be remove in the popup
+  * Add python 2.6 compatibility
+  * Cleanup example config a bit
+  * Add autostart config
+  * Make clipboard notifications htmlsafe
+
+  [ Sven Wegener ]
+  * escape underscores for use_underline
+
+  [ Roland Sommer ]
+  * Added application data to setup.py
+
+ -- Roland Sommer <rol@ndsommer.de>  Wed, 08 May 2013 14:57:56 +0200
+
 klemmbrett (0.3) raring; urgency=low
 
   [ Michael van Bracht ]
