@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os as _os
+import re as _re
 import functools as _ft
 import cPickle as _pickle
 import weakref as _weakref
@@ -40,12 +41,17 @@ class Plugin(_gobject.GObject):
         self.klemmbrett.set(text)
 
     def _printable(self, text, htmlsafe = False):
-        clean = text.replace('\n', ' ')[
-            :min(
-                len(text),
-                int(self.options.get('line-length', 30)),
-            )
-        ].strip()
+        ll = int(self.options.get('line-length', 30))
+        clean = _re.sub(r'\s+', ' ', text).strip()
+
+        if len(clean) > ll:
+            om = self.options.get('omit-mode', 'middle')
+            if om == 'start':
+                clean = clean[len(clean) - ll:]
+            elif om == 'middle':
+                clean = clean[:ll / 2] + " ... " + clean[len(clean) - (ll / 2):]
+            elif om == 'end':
+                clean = clean[:ll]
 
         if htmlsafe:
             clean = _util.htmlsafe(clean)
@@ -104,7 +110,7 @@ class PopupPlugin(Plugin):
 
     def _build_menu(self, menu, items):
         for pos, (label, value) in enumerate(items):
-            label = "_%s %s" % (pos, label)
+            label = "_%s %s" % (pos, label.replace('_', '__'))
             item = _gtk.MenuItem(label, use_underline = True)
             if _util.isgenerator(value):
                 item.set_submenu(_gtk.Menu())

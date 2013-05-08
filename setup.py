@@ -13,6 +13,7 @@ _setuptools.setup(
     scripts = ["scripts/klemmbrett"],
     data_files = [
         ("/etc", ["conf/klemmbrett.conf"]),
+        ("/etc/xdg/autostart/", ["conf/klemmbrett-autostart.desktop"]),
         ("share/klemmbrett/", ["data/gtk-paste.svg", "data/gtk-paste2.svg"]),
         ("share/applications/", ["conf/klemmbrett.desktop"]),
     ]
