@@ -1,3 +1,10 @@
+klemmbrett (0.5) raring; urgency=low
+
+  [ Michael van Bracht ]
+  * Use only single key accelerators 0-9 a-z A-Z
+
+ -- Roland Sommer <rol@ndsommer.de>  Thu, 27 Jun 2013 21:41:35 +0200
+
 klemmbrett (0.4) raring; urgency=low
 
   [ Michael van Bracht ]
