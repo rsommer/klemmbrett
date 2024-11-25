@@ -27,7 +27,7 @@ _setuptools.setup(
         "notify2",
         "dbus-python",
         "pygobject",
-        "pycrypto",
+        "pycryptodome",
     ],
     classifiers=[
         "Programming Language :: Python :: 3 :: Only",

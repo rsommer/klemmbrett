@@ -7,6 +7,6 @@ Standards-Version: 3.9.1
 
 Package: klemmbrett
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}
+Depends: ${misc:Depends}, ${python:Depends}, python3-notify2
 Description: Versatile clipboard manager
 

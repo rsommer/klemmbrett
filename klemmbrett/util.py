@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import html as _html
-import pkg_resources as _pr
-import distutils.util as _util
+import importlib.resources as _ir
 
 try:
     from compiler.consts import CO_GENERATOR
@@ -12,7 +11,7 @@ except ImportError:
 
 
 def get_status_icon_filename():
-    return _pr.resource_filename("klemmbrett", "assets/klemmbrett.png")
+    return str(_ir.files("klemmbrett") / "assets/klemmbrett.png")
 
 
 def isgenerator(func):
@@ -31,12 +30,28 @@ def yieldwrap(func, *args, **kwargs):
     return wrapped
 
 
+def _strtobool (val):
+    """Convert a string representation of truth to true (1) or false (0).
+
+    True values are 'y', 'yes', 't', 'true', 'on', and '1'; false values
+    are 'n', 'no', 'f', 'false', 'off', and '0'.  Raises ValueError if
+    'val' is anything else.
+    """
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return 1
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return 0
+    else:
+        raise ValueError("invalid truth value %r" % (val,))
+
+
 def humanbool(value):
     """
         Use distutils.util strtobool to convert various boolean tokens
         like yes, on, no, off etc to a boolean
     """
-    return _util.strtobool(str(value).strip().lower() or 'no')
+    return _strtobool(str(value).strip().lower() or 'no')
 
 
 def load_dotted(name):
